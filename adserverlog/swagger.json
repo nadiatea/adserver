@@ -1,0 +1,115 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "adserver logs API",
+    "description": ".",
+    "version": "1"
+  },
+  "host": "127.0.0.1",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {   
+    "/sum" : {
+      "get" : {
+        "tags": ["adserverlogs"],
+        "summary": "Fetch the sum of price foreach resulting campaign match",
+        "operationId": "sum",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters" : [],
+        "responses" : {
+          "200" : {
+            "description":"sum of price foreach resulting campaign match",
+            "schema" : {
+              "type": "number"
+            }
+          },
+          "404" : {
+            "$ref": "#/responses/notfound"
+          }
+        }
+      }
+    
+    },
+    "/sum_placement" : {
+      "get" : {
+        "tags": ["adserverlogs"],
+        "summary": "Fetch the sum of price foreach resulting match for a placement ID",
+        "operationId": "sumByCampaignForAPlacement",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters" : [{
+          "in" : "query",
+          "name" : "placement",
+          "description" : "ID of a placement",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "$ref": "#/responses/okSumByCampaign"
+          },
+          "400" : {
+            "$ref": "#/responses/invalidParameters"
+          },
+          "404" : {
+            "$ref": "#/responses/notfound"
+          }
+        }
+      }
+    
+    }
+    
+    
+    
+  },
+  "definitions": {
+    "responseBodyError" : {
+      "type" : "object",
+      "properties" : {
+        "error" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  
+  "responses": {    
+    "okSumByCampaign" : {
+      "description" : "Sum of matching result campaigns for the given placement.",
+      "schema" : {
+        "type" : "object",
+        "additionalProperties":
+        {
+          "type" : "number"
+        }
+      }
+    },
+    "invalidParameters" : {
+      "description" : "The provided data do not meet requirements",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    },
+    "internalError" : {
+      "description" : "Internal error",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    },
+    "notfound" : {
+      "description" : "Data not found",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    },
+    "serviceUnavailable" : {
+      "description" : "Service is unavailable, please retry later",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    }
+  }
+}

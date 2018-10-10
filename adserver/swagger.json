@@ -1,0 +1,131 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "adserver API",
+    "description": ".",
+    "version": "1"
+  },
+  "host": "127.0.0.1",
+  "basePath": "/",
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {    
+    "/ad" : {
+      "post" : {
+        "tags": ["adserver"],
+        "summary": "search the best campaign ",
+        "description": "search the best campaign for a placement ID, a country and a device type",
+        "operationId": "post",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters" : [{
+          "in" : "query",
+          "name" : "placement",
+          "description" : "ID of a placement",
+          "required" : true,
+          "type" : "string"
+        },{
+          "in" : "body",
+          "name" : "search request",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "country" : {
+                "description":"ISO of a country (eg. FRA)",
+                "type" : "string"
+              },
+              "device" : {
+                "description":"Device type (TABLET, MOBILE or PC)",
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "$ref": "#/responses/accepted"
+          },
+          "400" : {
+            "$ref": "#/responses/invalidParameters"
+          },
+          "404" : {
+            "$ref": "#/responses/notfound"
+          }
+        }
+      }
+    
+    }
+    
+    
+    
+  },
+  "definitions": {
+    "responseBodyError" : {
+      "type" : "object",
+      "properties" : {
+        "error" : {
+          "type" : "string"
+        }
+      }
+    }
+  },
+  
+  "responses": {    
+    "accepted" : {
+      "description" : "Search is successfull, please find the best campaign in the result.",
+      "schema" : {
+        "required": ["campaign", "content" ],
+        "type" : "object",
+        "properties" : {
+          "campaign" : {
+            "description" : " ID",
+            "type" : "string"
+          },
+          "content" : {
+            "type" : "object",
+            "properties" : {
+              "title" : {
+                "description" : "Title of the campaign",
+                "type" : "string"
+              },
+              "description" : {
+                "description" : "Description of the campaign",
+                "type" : "string"
+              },
+              "landing" : {
+                "description" : "URL of the campaign",
+                "type" : "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "invalidParameters" : {
+      "description" : "The provided data do not meet requirements",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    },
+    "internalError" : {
+      "description" : "Internal error",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    },
+    "notfound" : {
+      "description" : "Data not found",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    },
+    "serviceUnavailable" : {
+      "description" : "Service is unavailable, please retry later",
+      "schema" : {
+        "$ref" : "#/definitions/responseBodyError"
+      }
+    }
+  }
+}

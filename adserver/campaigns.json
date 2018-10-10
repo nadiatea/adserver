@@ -1,0 +1,40 @@
+{
+"campaigns":{
+"d0f631ca1ddba8db3bcfcb9e057cdc98":{
+"test":"blabla",
+"price":2.5,
+"content":{
+"title":"Mangez 5 fruits et légumes par jour",
+"description":"Manger, Bouger, Santé",
+"landing":"http://www.mangerbouger.fr/"
+},
+"countries":[
+"FRA",
+"BEL"
+],
+"devices":[
+"DESKTOP"
+],
+"placements":[
+"f64551fcd6f07823cb87971cfb914464",
+"3946ca64ff78d93ca61090a437cbb6b3"
+]
+},
+"9c0abe51c6e6655d81de2d044d4fb194":{
+"price":2.3,
+"content":{
+
+"title":"Fumer tue",
+"description":"Fumer c'est mal",
+"landing":"http://www.tabac-info-service.fr/"
+},
+"devices":[
+"DESKTOP",
+"MOBILE"
+],
+"placements":[
+"3946ca64ff78d93ca61090a437cbb6b3"
+]
+}
+}
+}
