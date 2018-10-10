@@ -32,15 +32,15 @@ Search the best campaign (with the best price) that match with the placement id,
 Name |	Type  |	Type param  |	Description | Example value
 -----|--------|-------------|-------------|--------------
 placement | string | query | ID of a placement | 3946ca64ff78d93ca61090a437cbb6b3
-search request | json objet | body | search request | ```json {  "country": "FRA",  "device": "MOBILE"}```
+search request | json objet | body | search request | ``` {  "country": "FRA",  "device": "MOBILE"}```
 
 ##### Responses
 
 Code | Description | Example Value
 -----|-------------|--------------
 200	| Search is successfull, please find the best in the result. | ```json {    "campaign":"9c0abe51c6e6655d81de2d044d4fb194","content":{        "title":"Fumer tue",        "description":"Fumer c'est mal",        "landing":"http://www.tabac-info-service.fr/"    }}```
-400	| The provided data do not meet requirements | ```json {  "error": "string"}```
-404	| Data not found | ```json {  "error": "string"}```
+400	| The provided data do not meet requirements | ``` {  "error": "string"}```
+404	| Data not found | ```{  "error": "string"}```
 
 
 ### Ad server logs
@@ -54,7 +54,7 @@ Fetch the sum of price foreach resulting campaign match
 Code | Description | Example Value
 -----|-------------|--------------
 200	| Sum of matching result campaigns. | 1248.3
-404	| Data not found | ```json {  "error": "string"}```
+404	| Data not found | ```{  "error": "string"}```
 
 #### GET /sum_placement?placement=[placementID]
 Fetch the sum of price foreach resulting campaign match for a placement ID
@@ -66,9 +66,9 @@ placement | string | query | ID of a placement | 3946ca64ff78d93ca61090a437cbb6b
 ##### Responses
 Code | Description | Example Value
 -----|-------------|--------------
-200	| Sum of matching result campaigns for the given placement. | ```json {"d0f631ca1ddba8db3bcfcb9e057cdc98":10,"9c0abe51c6e6655d81de2d044d4fb194":6.9} ```
-400	| The provided data do not meet requirements | ```json {  "error": "string"}```
-404	| Data not found | ```json {  "error": "string"}```
+200	| Sum of matching result campaigns for the given placement. | ```{"d0f631ca1ddba8db3bcfcb9e057cdc98":10,"9c0abe51c6e6655d81de2d044d4fb194":6.9} ```
+400	| The provided data do not meet requirements | ``` {  "error": "string"}```
+404	| Data not found | ``` {  "error": "string"}```
 
 ## Tests
 
