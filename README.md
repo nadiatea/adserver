@@ -8,11 +8,6 @@ An ad server log allow to log all successed search and fetch the sum of price of
 ```bash
 docker-compose up
 ```
-
-## Motivation
-
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
 ## Installation
 
 Provide code examples and explanations of how to get the project.
@@ -27,10 +22,13 @@ Provide code examples and explanations of how to get the project.
 ### Ad server
 
 #### POST /ad?placement=[placementID]
+
 Search the best campaign (with the best price) that match with the placement id, the country and the device type
+
 ##### Parameters
+
 Name |	Type  |	Type param  |	Description | Example value
------|--------|-------------|---------------
+-----|--------|-------------|-------------|--------------
 placement | string | query | ID of a placement | 3946ca64ff78d93ca61090a437cbb6b3
 search request | json objet | body | ```json
 Example Value
@@ -41,7 +39,9 @@ Model
 }```
 
 ##### Responses
+
 Code | Description | Example Value
+-----|-------------|--------------
 200	| Search is successfull, please find the best in the result. | ```json
 {
     "campaign":"9c0abe51c6e6655d81de2d044d4fb194",
@@ -64,10 +64,13 @@ Code | Description | Example Value
 ### Ad server logs
 
 #### GET /sum
+
 Fetch the sum of price foreach resulting campaign match
 
 ##### Responses
+
 Code | Description | Example Value
+-----|-------------|--------------
 200	| Sum of matching result campaigns. | ```json
 1248.3
 ```
@@ -80,11 +83,12 @@ Code | Description | Example Value
 Fetch the sum of price foreach resulting campaign match for a placement ID
 ##### Parameters
 Name |	Type  |	Type param  |	Description | Example value
------|--------|-------------|---------------
+-----|--------|-------------|-------------|--------------
 placement | string | query | ID of a placement | 3946ca64ff78d93ca61090a437cbb6b3
 
 ##### Responses
 Code | Description | Example Value
+-----|-------------|--------------
 200	| Sum of matching result campaigns for the given placement. | ```json
 {
 "d0f631ca1ddba8db3bcfcb9e057cdc98":10,
