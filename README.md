@@ -12,7 +12,8 @@ docker-compose up
 
 Provide code examples and explanations of how to get the project.
 
-###Build the project
+### Build the project
+
 `cd adserver && GOOS=linux CGO_ENABLED=0 go build -a -ldflags "-s -w -X 'main.buildTag=' -X 'main.buildDate=2018/10/09 12:05:35'" -v -o adserver`
 `cd adserverlogs && GOOS=linux CGO_ENABLED=0 go build -a -ldflags "-s -w -X 'main.buildTag=' -X 'main.buildDate=2018/10/09 12:05:35'" -v -o adserverlogs`
 
