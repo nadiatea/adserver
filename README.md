@@ -15,6 +15,7 @@ Provide code examples and explanations of how to get the project.
 ### Build the project
 
 `cd adserver && GOOS=linux CGO_ENABLED=0 go build -a -ldflags "-s -w -X 'main.buildTag=' -X 'main.buildDate=2018/10/09 12:05:35'" -v -o adserver`
+
 `cd adserverlogs && GOOS=linux CGO_ENABLED=0 go build -a -ldflags "-s -w -X 'main.buildTag=' -X 'main.buildDate=2018/10/09 12:05:35'" -v -o adserverlogs`
 
 
@@ -31,10 +32,7 @@ Search the best campaign (with the best price) that match with the placement id,
 Name |	Type  |	Type param  |	Description | Example value
 -----|--------|-------------|-------------|--------------
 placement | string | query | ID of a placement | 3946ca64ff78d93ca61090a437cbb6b3
-search request | json objet | body | ```json
-Example Value
-Model
-{
+search request | json objet | body | ```json {
   "country": "FRA",
   "device": "MOBILE"
 }```
@@ -43,8 +41,7 @@ Model
 
 Code | Description | Example Value
 -----|-------------|--------------
-200	| Search is successfull, please find the best in the result. | ```json
-{
+200	| Search is successfull, please find the best in the result. | ```json {
     "campaign":"9c0abe51c6e6655d81de2d044d4fb194",
     "content":{
         "title":"Fumer tue",
@@ -52,12 +49,10 @@ Code | Description | Example Value
         "landing":"http://www.tabac-info-service.fr/"
     }
 }```
-400	| The provided data do not meet requirements | ```json
-{
+400	| The provided data do not meet requirements | ```json {
   "error": "string"
 }```
-404	| Data not found | ```json
-{
+404	| Data not found | ```json {
   "error": "string"
 }```
 
@@ -72,11 +67,8 @@ Fetch the sum of price foreach resulting campaign match
 
 Code | Description | Example Value
 -----|-------------|--------------
-200	| Sum of matching result campaigns. | ```json
-1248.3
-```
-404	| Data not found | ```json
-{
+200	| Sum of matching result campaigns. | 1248.3
+404	| Data not found | ```json {
   "error": "string"
 }```
 
@@ -90,18 +82,14 @@ placement | string | query | ID of a placement | 3946ca64ff78d93ca61090a437cbb6b
 ##### Responses
 Code | Description | Example Value
 -----|-------------|--------------
-200	| Sum of matching result campaigns for the given placement. | ```json
-{
+200	| Sum of matching result campaigns for the given placement. | ```json {
 "d0f631ca1ddba8db3bcfcb9e057cdc98":10,
 "9c0abe51c6e6655d81de2d044d4fb194":6.9
-}
-```
-400	| The provided data do not meet requirements | ```json
-{
+} ```
+400	| The provided data do not meet requirements | ```json {
   "error": "string"
 }```
-404	| Data not found | ```json
-{
+404	| Data not found | ```json {
   "error": "string"
 }```
 
