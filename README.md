@@ -32,10 +32,7 @@ Search the best campaign (with the best price) that match with the placement id,
 Name |	Type  |	Type param  |	Description | Example value
 -----|--------|-------------|-------------|--------------
 placement | string | query | ID of a placement | 3946ca64ff78d93ca61090a437cbb6b3
-search request | json objet | body | ```json {
-  "country": "FRA",
-  "device": "MOBILE"
-}```
+search request | json objet | body | search request | ```json {  "country": "FRA",  "device": "MOBILE"}```
 
 ##### Responses
 
